@@ -1,0 +1,18 @@
+body{
+    background: url(bg.jpg) no-repeat center fixed;
+    background-size: cover;
+}
+
+.login-register-text {
+    color: #111;
+    font-weight: 600;    
+}
+
+.login-register-text a {
+    text-decoration: none;
+    color: blue;    
+}
+
+.initButton {
+    text-align: center;
+}
