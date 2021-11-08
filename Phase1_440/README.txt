@@ -1,8 +1,7 @@
 Team #9
 Team Member Names: Ani Khachatryan, Karen Prava
 
-* I was not sure if the Google Drive Video will load, so I uploaded the video on YouTube. *
-* The quality is not very good on YouTube though. I hope this submission is satisfactory. *
+* I was not sure if the Google Drive Video will load, so I also uploaded the video on YouTube. *
 
 YouTube Video Link: https://youtu.be/YWHb8Bjs-Ps
 Google Drive Video Link: https://drive.google.com/file/d/17hvCDfObUhY8FCWpV3vqR6D5ARYzti6N/view?usp=sharing
