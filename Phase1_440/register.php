@@ -1,6 +1,5 @@
 <?php 
 
-
 include 'con_db.php';
 
 error_reporting(0);
@@ -21,7 +20,7 @@ if(isset($_POST['submit'])) {
     $lastName= $_POST['lastName'];
     $username= $_POST['username'];
     $email= $_POST['email'];
-    $password= $_POST['password']; //encrypt password & store in db
+    $password= $_POST['password'];
     $cpassword= $_POST['cpassword'];
     
     if($password == $cpassword){
@@ -36,6 +35,7 @@ if(isset($_POST['submit'])) {
 
             // no records found
             if(count($objs) == 0) {
+                // Encrypt password
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $stmt = "INSERT INTO user (firstName, lastName, username, email, password)
                         VALUES ('$firstName', '$lastName', '$username', '$email', '$password')";
@@ -74,10 +74,10 @@ if(isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-register">
             <p class="title-text">Register</p>
             <div class="input-group">
-				<input type="text" placeholder="Firstname" name="firstName" value="<?php echo $firstName; ?>" required>
+				<input type="text" placeholder="First name" name="firstName" value="<?php echo $firstName; ?>" required>
 			</div>
             <div class="input-group">
-				<input type="text" placeholder="Lastname" name="lastName" value="<?php echo $lastName; ?>" required>
+				<input type="text" placeholder="Last name" name="lastName" value="<?php echo $lastName; ?>" required>
 			</div>
 			<div class="input-group">
 				<input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>

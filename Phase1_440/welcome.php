@@ -37,14 +37,12 @@ if(!empty($_POST)) {
                         UNIQUE (`email`)) 
                         ENGINE = InnoDB";
 
-
-
-        
         // If the query for creating the table worked:
         if($conn->query($createTable) == true) {
+            $password = password_hash('pass1234', PASSWORD_BCRYPT);
             // Create another query to add the user back into the database
             $addUser = "INSERT INTO `userregistration`.`user`(`username`, `password`, `firstName`, `lastName`, `email`) 
-                        VALUES ('comp440','pass1234','Ani','Khachatryan', 'ani@gmail.com')";
+                        VALUES ('comp440','$password','Ani','Khachatryan', 'ani@gmail.com')";
             // If the query for adding the user to the database worked:
             if($conn->query($addUser) == true) {
                 // Let the user know that the database was successfully initialized
@@ -53,7 +51,7 @@ if(!empty($_POST)) {
             //Otherwise:
             else {
                 // Let the user know that initializing database was unsuccessful
-                echo "<script>alert('ERROR: Could not initialize the database!')</script>";
+                echo "<script>alert('ERROR: Could not initialize database!')</script>";
             }
         }
         // Otherwise:
@@ -62,8 +60,10 @@ if(!empty($_POST)) {
             echo "<script>alert('ERROR: Could not initialize database!')</script>";
         }
     }
+    // Otherwise:
     else {
-        echo "<script>alert('ERROR: Was not able to initialize database!')</script>";
+        // Let the user know that initializing the database was unsuccessful
+        echo "<script>alert('ERROR: Could not initialize database!')</script>";
     }
 }
 ?>
@@ -72,13 +72,17 @@ if(!empty($_POST)) {
 
 <html>
     <head>
+        <!-- Title of the web page -->
         <title>Welcome</title>
 
     </head>
     <body>
+        <!-- Displaying welcome message with the user's username -->
         <?php echo "<h1> Welcome, " . $_SESSION['username']. "</h1>"; ?>
         <br>
+        <!-- Creating a post form to create a button -->
         <form method="POST" action="welcome.php">
+            <!-- Creating a button that will initialize the database when the user clicks it -->
             <input class="button" type="submit" name="submit" value="Initialize Database">
         </form>
         <br>
